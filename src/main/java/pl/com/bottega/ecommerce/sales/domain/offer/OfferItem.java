@@ -15,30 +15,16 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class OfferItem extends Product {
-
-    // discount
-    private String discountCause;
-    
-    private BigDecimal discount;
-
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
-            String productType, int quantity) {
-        this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
-    }
-
-    public OfferItem(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
-            String productType, int quantity, BigDecimal discount, String discountCause) {
-        this.productId = productId;
-        this.productPrice = productPrice;
-        this.productName = productName;
-        this.productSnapshotDate = productSnapshotDate;
-        this.productType = productType;
-
-        this.quantity = quantity;
+public class OfferItem{
+	
+	private Product product;
+	
+	public OfferItem(Product product) {
+		this(product, null);
         this.discount = discount;
-        this.discountCause = discountCause;
-
+	}
+    //    this.discountCause = discountCause;
+/*
         BigDecimal discountValue = new BigDecimal(0);
         if (discount != null) {
             discountValue = discountValue.subtract(discount);
@@ -46,55 +32,24 @@ public class OfferItem extends Product {
 
         this.totalCost = productPrice.multiply(new BigDecimal(quantity)).subtract(discountValue);
     }
+*/
+        
+ //   public BigDecimal getDiscount() {
+ //       return discount;
+ //   }
 
-    
-    public String getProductId() {
-        return productId;
-    }
 
-    public BigDecimal getProductPrice() {
-        return productPrice;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public Date getProductSnapshotDate() {
-        return productSnapshotDate;
-    }
-
-    public String getProductType() {
-        return productType;
-    }
-
-    public BigDecimal getTotalCost() {
-        return totalCost;
-    }
-
-    public String getTotalCostCurrency() {
-        return currency;
-    }
-
-    public BigDecimal getDiscount() {
-        return discount;
-    }
-
-    public String getDiscountCause() {
-        return discountCause;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
+	public OfferItem(Product product, Discount discount)
+	{
+		this.product = product;
+	}
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + (discount == null ? 0 : discount.hashCode());
-        result = prime * result + (productName == null ? 0 : productName.hashCode());
+        result = prime * result + (Product.getproductName == null ? 0 : Product.getproductName.hashCode());
         result = prime * result + (productPrice == null ? 0 : productPrice.hashCode());
         result = prime * result + (productId == null ? 0 : productId.hashCode());
         result = prime * result + (productType == null ? 0 : productType.hashCode());
@@ -122,8 +77,8 @@ public class OfferItem extends Product {
         } else if (!discount.equals(other.discount)) {
             return false;
         }
-        if (productName == null) {
-            if (other.productName != null) {
+        if (Product.getproductName == null) {
+            if (other.product.getproductName != null) {
                 return false;
             }
         } else if (!productName.equals(other.productName)) {
